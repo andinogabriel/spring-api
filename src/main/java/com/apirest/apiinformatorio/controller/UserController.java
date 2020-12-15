@@ -43,4 +43,9 @@ public class UserController {
         return HttpStatus.OK;
     }
 
+    @RequestMapping("/ciudad/{city}")
+    public ResponseEntity<List<User>> getUsersForCity(@PathVariable("city") String city) {
+        return ResponseEntity.ok().body(userService.getUsersForCity(city));
+    }
+
 }
