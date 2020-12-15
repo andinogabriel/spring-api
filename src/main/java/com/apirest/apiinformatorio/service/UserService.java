@@ -63,5 +63,9 @@ public class UserService {
         }
     }
 
+    public List<User> getUsersForCity(String city) {
+        return userRepository.getUsersForCity(city);
+    }
+
 
 }
