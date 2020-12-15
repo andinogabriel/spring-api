@@ -3,6 +3,7 @@ package com.apirest.apiinformatorio.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -48,21 +49,18 @@ public class User {
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     private List<Commentary> comments;
 
-    public List<Commentary> getComment() {
+    @JsonManagedReference
+    public List<Commentary> getComments() {
         return comments;
     }
 
-    public void setComment(List<Commentary> comment) {
-        this.comments = comment;
+    public void setComments(List<Commentary> comments) {
+        this.comments = comments;
     }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
 
-    public void addPost(Post post) {
-        if(posts == null) new ArrayList<Post>();
-        posts.add(post);
-    }
 
     @JsonManagedReference
     public List<Post> getPosts() {
@@ -102,6 +100,7 @@ public class User {
     }
 
     @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     public String getPassword() {
         return password;
     }
