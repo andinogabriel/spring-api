@@ -2,6 +2,7 @@ package com.apirest.apiinformatorio.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -40,11 +41,6 @@ public class Post {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
     private List<Commentary> commentaries;
-
-    public void addCommentary(Commentary commentary) {
-        if (commentaries == null) new ArrayList<Commentary>();
-        commentaries.add(commentary);
-    }
 
 
     public Long getId() {
@@ -104,6 +100,7 @@ public class Post {
         this.published = published;
     }
 
+    @JsonManagedReference
     public List<Commentary> getCommentaries() {
         return commentaries;
     }
