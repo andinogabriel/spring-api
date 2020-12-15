@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.function.EntityResponse;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -40,11 +39,20 @@ public class PostController {
     }
 
 
+    @DeleteMapping("{id}")
     public HttpStatus deletePostById(@PathVariable("id") Long id) {
         postService.deletePostById(id);
         return HttpStatus.NO_CONTENT;
     }
 
+    @RequestMapping(value = "/palabra/{wordTitle}")
+    public ResponseEntity<List<Post>> findPostsByWordTitle (@PathVariable(value = "wordTitle") String wordTitle) {
+        return ResponseEntity.ok().body(postService.findPostsByWordTitle(wordTitle));
+    }
 
+    @GetMapping("/no-publicados")
+    public ResponseEntity<List<Post>> getPostsNotPublished() {
+        return ResponseEntity.ok().body(postService.getPostsNotPublished());
+    }
 
 }
