@@ -3,10 +3,15 @@ package com.apirest.apiinformatorio.controller;
 import com.apirest.apiinformatorio.model.User;
 import com.apirest.apiinformatorio.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @RequestMapping("api/v1/user")
@@ -46,6 +51,11 @@ public class UserController {
     @RequestMapping("/ciudad/{city}")
     public ResponseEntity<List<User>> getUsersForCity(@PathVariable("city") String city) {
         return ResponseEntity.ok().body(userService.getUsersForCity(city));
+    }
+
+    @RequestMapping(value = "/fecha-creacion/{date}")
+    public ResponseEntity<List<User>> getUsersFromRegisterDate(@PathVariable(value = "date") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate date) {
+        return ResponseEntity.ok().body(userService.getUsersFromRegisterDate(date));
     }
 
 }

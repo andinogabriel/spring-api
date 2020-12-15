@@ -3,6 +3,7 @@ package com.apirest.apiinformatorio.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.ejb.Local;
 import javax.persistence.*;
@@ -36,7 +37,8 @@ public class User {
     private String password;
 
     @CreationTimestamp
-    private Date registerDate;
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private LocalDate registerDate;
 
     @Column(length = 100)
     private String city;
@@ -110,11 +112,11 @@ public class User {
         this.password = password;
     }
 
-    public Date getRegisterDate() {
+    public LocalDate getRegisterDate() {
         return registerDate;
     }
 
-    public void setRegisterDate(Date registerDate) {
+    public void setRegisterDate(LocalDate registerDate) {
         this.registerDate = registerDate;
     }
 
