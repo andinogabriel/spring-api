@@ -33,7 +33,7 @@ public class CommentaryService {
     }
 
     public void deleteCommentaryById(Long id) {
-        Optional<Commentary> optionalCommentary = commentaryRepository.findById(id)
+        Optional<Commentary> optionalCommentary = commentaryRepository.findById(id);
         if(optionalCommentary.isPresent()) {
             commentaryRepository.deleteById(id);
         } else {
