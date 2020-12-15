@@ -53,7 +53,6 @@ public class UserService {
             userToUpDate.setName(user.getName());
             userToUpDate.setLastName(user.getLastName());
             userToUpDate.setEmail(user.getEmail());
-            userToUpDate.setPassword(user.getPassword());
             userToUpDate.setCountry(user.getCountry());
             userToUpDate.setState(user.getState());
             userToUpDate.setCity(user.getCity());

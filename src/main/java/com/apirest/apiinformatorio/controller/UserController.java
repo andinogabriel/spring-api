@@ -42,7 +42,7 @@ public class UserController {
     @DeleteMapping("{id}")
     public HttpStatus deleteUserById(@PathVariable("id") Long id) {
         userService.deleteUserById(id);
-        return HttpStatus.OK;
+        return HttpStatus.NO_CONTENT;
     }
 
     @RequestMapping("/ciudad/{city}")
