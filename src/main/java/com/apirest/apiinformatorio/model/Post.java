@@ -1,9 +1,13 @@
 package com.apirest.apiinformatorio.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 
@@ -24,11 +28,11 @@ public class Post {
     @Column(nullable = false)
     private String body;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(updatable = false, nullable = false)
-    private Calendar creationDate;
+    @CreationTimestamp
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private LocalDate creationDate;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
@@ -75,14 +79,15 @@ public class Post {
         this.body = body;
     }
 
-    public Calendar getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Calendar creationDate) {
+    public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
 
+    @JsonBackReference
     public User getUser() {
         return user;
     }
