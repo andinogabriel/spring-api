@@ -56,4 +56,12 @@ public class PostService {
         }
     }
 
+    public List<Post> findPostsByWordTitle(String wordTitle) {
+        return postRepository.findPostsByWordTitle(wordTitle);
+    }
+
+    public List<Post> getPostsNotPublished() {
+        return postRepository.getPostsNotPublished();
+    }
+
 }
