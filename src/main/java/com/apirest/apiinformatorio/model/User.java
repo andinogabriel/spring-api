@@ -2,17 +2,14 @@ package com.apirest.apiinformatorio.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.ejb.Local;
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
+
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+
 import java.util.List;
 
 
@@ -29,11 +26,10 @@ public class User {
     @Column(nullable = false, length = 150)
     private String lastName;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100, unique = true)
     private String email;
 
     @Column(length = 100)
-    @JsonIgnore
     private String password;
 
     @CreationTimestamp
@@ -68,6 +64,7 @@ public class User {
         posts.add(post);
     }
 
+    @JsonManagedReference
     public List<Post> getPosts() {
         return posts;
     }
@@ -104,12 +101,9 @@ public class User {
         this.email = email;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public LocalDate getRegisterDate() {
