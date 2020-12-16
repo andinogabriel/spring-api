@@ -7,7 +7,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.Calendar;
 
 @Entity
 public class Commentary {
@@ -16,8 +15,9 @@ public class Commentary {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JsonBackReference("user_comments")
     private User author;
 
     @CreationTimestamp
@@ -28,8 +28,9 @@ public class Commentary {
     @Size(min = 3, max = 200)
     private String comment;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "post_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    @JsonBackReference("post_comments")
     private Post post;
 
     public Long getId() {
@@ -40,9 +41,13 @@ public class Commentary {
         this.id = id;
     }
 
-    @JsonBackReference
+
     public User getAuthor() {
         return author;
+    }
+
+    public Post getPost() {
+        return post;
     }
 
     public void setAuthor(User author) {
@@ -57,10 +62,7 @@ public class Commentary {
         this.comment = comment;
     }
 
-    @JsonBackReference
-    public Post getPost() {
-        return post;
-    }
+
 
     public void setPost(Post post) {
         this.post = post;

@@ -47,9 +47,9 @@ public class User {
     private String country;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    @JsonManagedReference("user_comments")
     private List<Commentary> comments;
 
-    @JsonManagedReference
     public List<Commentary> getComments() {
         return comments;
     }
@@ -59,10 +59,9 @@ public class User {
     }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonManagedReference("user_post")
     private List<Post> posts;
 
-
-    @JsonManagedReference
     public List<Post> getPosts() {
         return posts;
     }
@@ -103,6 +102,10 @@ public class User {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public LocalDate getRegisterDate() {

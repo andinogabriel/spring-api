@@ -35,11 +35,13 @@ public class Post {
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference("user_post")
     private User user;
 
     private boolean published;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    @JsonManagedReference("post_comments")
     private List<Commentary> commentaries;
 
 
@@ -83,9 +85,10 @@ public class Post {
         this.creationDate = creationDate;
     }
 
-    @JsonBackReference
     public User getUser() {
         return user;
+    } public List<Commentary> getCommentaries() {
+        return commentaries;
     }
 
     public void setUser(User user) {
@@ -98,11 +101,6 @@ public class Post {
 
     public void setPublished(boolean published) {
         this.published = published;
-    }
-
-    @JsonManagedReference
-    public List<Commentary> getCommentaries() {
-        return commentaries;
     }
 
     public void setCommentaries(List<Commentary> commentaries) {

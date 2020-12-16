@@ -53,5 +53,8 @@ public class CommentaryService {
         }
     }
 
+    public List<Commentary> getCommentariesPostByLimit(Long id_post, Integer lim) {
+        return commentaryRepository.getCommentariesPostByLimit(id_post, lim);
+    }
 
 }

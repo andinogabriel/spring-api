@@ -42,6 +42,10 @@ public class CommentaryController {
         return HttpStatus.NO_CONTENT;
     }
 
+    @GetMapping("/busqueda/{id_post}/{lim}")
+    public ResponseEntity<List<Commentary>> getCommentariesPostByLimit(@PathVariable("id_post") Long id_post, @PathVariable("lim") Integer lim) {
+        return ResponseEntity.ok().body(commentaryService.getCommentariesPostByLimit(id_post, lim));
+    }
 
 
 }
