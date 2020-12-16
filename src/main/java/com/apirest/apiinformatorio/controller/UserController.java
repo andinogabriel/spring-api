@@ -1,5 +1,6 @@
 package com.apirest.apiinformatorio.controller;
 
+import com.apirest.apiinformatorio.exception.UserNotFoundException;
 import com.apirest.apiinformatorio.model.User;
 import com.apirest.apiinformatorio.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,12 @@ public class UserController {
 
     @RequestMapping("{id}")
     public ResponseEntity<User> getUserById (@PathVariable("id") Long id) {
-        return ResponseEntity.ok().body(userService.getUserById(id));
+        boolean isUserExist = userService.isUserExist(id);
+        if(isUserExist) {
+            return ResponseEntity.ok().body(userService.getUserById(id));
+        } else {
+            throw new UserNotFoundException();
+        }
     }
 
     @PutMapping("{id}")
