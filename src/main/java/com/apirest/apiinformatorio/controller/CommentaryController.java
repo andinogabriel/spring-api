@@ -1,6 +1,8 @@
 package com.apirest.apiinformatorio.controller;
 
 import com.apirest.apiinformatorio.model.Commentary;
+import com.apirest.apiinformatorio.model.Post;
+import com.apirest.apiinformatorio.model.User;
 import com.apirest.apiinformatorio.service.CommentaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +28,7 @@ public class CommentaryController {
         return ResponseEntity.ok().body(commentaryService.getCommentaryById(id));
     }
 
-    @PostMapping
+    @PostMapping("{post_id}/comment")
     public ResponseEntity<Commentary> addCommentary(@RequestBody Commentary commentary) {
         return ResponseEntity.status(HttpStatus.CREATED).body(commentaryService.addCommentary(commentary));
     }
