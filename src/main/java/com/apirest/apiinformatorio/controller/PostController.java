@@ -45,8 +45,8 @@ public class PostController {
         return HttpStatus.NO_CONTENT;
     }
 
-    @RequestMapping(value = "/palabra/{wordTitle}")
-    public ResponseEntity<List<Post>> findPostsByWordTitle (@PathVariable(value = "wordTitle") String wordTitle) {
+    @GetMapping("/palabra")
+    public ResponseEntity<List<Post>> findPostsByWordTitle (@RequestParam("word") String wordTitle) {
         return ResponseEntity.ok().body(postService.findPostsByWordTitle(wordTitle));
     }
 
