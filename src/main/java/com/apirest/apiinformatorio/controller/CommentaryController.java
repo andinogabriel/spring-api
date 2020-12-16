@@ -43,9 +43,13 @@ public class CommentaryController {
     }
 
     @GetMapping("/busqueda")
-    public ResponseEntity<List<Commentary>> getCommentariesPostByLimit(@RequestParam("id_post") Long id_post, @RequestParam("lim") Integer lim) {
+    public ResponseEntity<List<Commentary>> getCommentariesPostByLimit(@RequestParam(value = "id_post") Long id_post, @RequestParam(value = "lim", required = false) Integer lim) {
+        if(lim == null) {
+            lim = commentaryService.getCommentaries().size();
+        }
         return ResponseEntity.ok().body(commentaryService.getCommentariesPostByLimit(id_post, lim));
     }
+
 
 
 }
