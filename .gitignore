@@ -22,7 +22,8 @@ mvnw
 mvnw.cmd
 pom.xml
 src/main/java/com/apirest/apiinformatorio/ApiInformatorioApplication.java
-
+target
+src/main/resources/application.yml
 
 ### NetBeans ###
 /nbproject/private/
