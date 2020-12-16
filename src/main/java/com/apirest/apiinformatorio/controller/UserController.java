@@ -45,13 +45,13 @@ public class UserController {
         return HttpStatus.NO_CONTENT;
     }
 
-    @RequestMapping("/ciudad/{city}")
-    public ResponseEntity<List<User>> getUsersForCity(@PathVariable("city") String city) {
+    @RequestMapping("/ciudad")
+    public ResponseEntity<List<User>> getUsersForCity(@RequestParam("city") String city) {
         return ResponseEntity.ok().body(userService.getUsersForCity(city));
     }
 
-    @RequestMapping(value = "/fecha-creacion/{date}")
-    public ResponseEntity<List<User>> getUsersFromRegisterDate(@PathVariable(value = "date") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate date) {
+    @RequestMapping(value = "/fecha-creacion")
+    public ResponseEntity<List<User>> getUsersFromRegisterDate(@RequestParam("date") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate date) {
         return ResponseEntity.ok().body(userService.getUsersFromRegisterDate(date));
     }
 
