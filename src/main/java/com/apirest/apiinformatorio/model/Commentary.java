@@ -41,7 +41,6 @@ public class Commentary {
         this.id = id;
     }
 
-
     public User getAuthor() {
         return author;
     }
@@ -61,8 +60,6 @@ public class Commentary {
     public void setComment(String comment) {
         this.comment = comment;
     }
-
-
 
     public void setPost(Post post) {
         this.post = post;
