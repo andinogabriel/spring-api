@@ -1,5 +1,6 @@
 package com.apirest.apiinformatorio.service;
 
+import com.apirest.apiinformatorio.exception.ResourceNotFoundException;
 import com.apirest.apiinformatorio.model.Country;
 import com.apirest.apiinformatorio.repository.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,40 +17,41 @@ public class CountryService {
     @Autowired
     private CountryRepository countryRepository;
 
-    public ResponseEntity<Country> addCountry(Country country) {
-        Country newCountry = countryRepository.save(country);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public Country addCountry(Country country) {
+        return countryRepository.save(country);
     }
 
-    public ResponseEntity<List<Country>> getCountries() {
-        List<Country> countries = countryRepository.findAll();
-        return ResponseEntity.ok(countries);
+    public List<Country> getCountries() {
+        return countryRepository.findAll();
     }
 
-    public ResponseEntity<Country> getCountryById(Long id){
+    public Country getCountryById(Long id){
         Optional<Country> optionalCountry = countryRepository.findById(id);
         if(optionalCountry.isPresent()) {
-            return ResponseEntity.ok(optionalCountry.get());
+            return optionalCountry.get();
         } else {
-            return ResponseEntity.noContent().build();
+            throw new ResourceNotFoundException("Pais con id: "+id+" no encontrado.");
         }
     }
 
-    public ResponseEntity<String> deleteCountry(Long id) {
-        countryRepository.deleteById(id);
-        String message = "Se ha borrado el pais con :" + id;
-        return ResponseEntity.ok(message);
+    public void deleteCountry(Long id) {
+        Optional<Country> optionalCountry = countryRepository.findById(id);
+        if(optionalCountry.isPresent()) {
+            countryRepository.deleteById(id);
+        } else {
+            throw new ResourceNotFoundException("Pais con id: "+id+" no encontrado.");
+        }
     }
 
-    public ResponseEntity<Country> updateCountry(Country country) {
+    public Country updateCountry(Country country) {
         Optional<Country> optionalCountry = countryRepository.findById(country.getId());
         if(optionalCountry.isPresent()) {
             Country updateCountry = optionalCountry.get();
             updateCountry.setName(country.getName());
             countryRepository.save(updateCountry);
-            return ResponseEntity.ok(updateCountry);
+            return updateCountry;
         } else {
-            return ResponseEntity.notFound().build();
+            throw new ResourceNotFoundException("Pais con id: "+country.getId()+" no encontrado.");
         }
     }
 
