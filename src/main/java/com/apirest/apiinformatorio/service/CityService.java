@@ -1,5 +1,6 @@
 package com.apirest.apiinformatorio.service;
 
+import com.apirest.apiinformatorio.exception.ResourceNotFoundException;
 import com.apirest.apiinformatorio.model.City;
 import com.apirest.apiinformatorio.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,40 +16,42 @@ public class CityService {
     @Autowired
     private CityRepository cityRepository;
 
-    public ResponseEntity<City> addCity(City city) {
-        City newCity = cityRepository.save(city);
-        return ResponseEntity.ok(newCity);
+    public City addCity(City city) {
+        return cityRepository.save(city);
     }
 
-    public ResponseEntity<List<City>> getCities() {
-        List<City> states = cityRepository.findAll();
-        return ResponseEntity.ok(states);
+    public List<City> getCities() {
+        return cityRepository.findAll();
     }
 
-    public ResponseEntity<City> getCityById(Long id){
+    public City getCityById(Long id){
         Optional<City> optionalCity = cityRepository.findById(id);
         if(optionalCity.isPresent()){
-            return ResponseEntity.ok(optionalCity.get());
+            return optionalCity.get();
         } else {
-            return ResponseEntity.noContent().build();
+            throw new ResourceNotFoundException("Ciudad con id: "+id+" no encontrada.");
         }
     }
 
-    public ResponseEntity<String> deleteCityById(Long id) {
-        cityRepository.deleteById(id);
-        String message = "Se ha borrado la ciudad con el ID: " + id;
-        return ResponseEntity.ok(message);
+    public String deleteCityById(Long id) {
+        Optional<City> optionalCity = cityRepository.findById(id);
+        if (optionalCity.isPresent()) {
+            String message = "Se ha borrado la ciudad con el ID: " + id;
+            cityRepository.deleteById(id);
+            return message;
+        }
+        throw new ResourceNotFoundException("Ciudad con id: "+id+" no encontrada.");
     }
 
-    public ResponseEntity<City> updateCity(City city) {
+    public City updateCity(City city) {
         Optional<City> optionalCity = cityRepository.findById(city.getId());
         if(optionalCity.isPresent()) {
             City cityToUpdate = optionalCity.get();
             cityToUpdate.setName(city.getName());
             cityRepository.save(cityToUpdate);
-            return ResponseEntity.ok(cityToUpdate);
+            return cityToUpdate;
         } else {
-            return ResponseEntity.notFound().build();
+            throw new ResourceNotFoundException("Ciudad con id: "+city.getId()+" no encontrada.");
         }
     }
 
