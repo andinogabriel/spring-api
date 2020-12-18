@@ -1,5 +1,6 @@
 package com.apirest.apiinformatorio.service;
 
+import com.apirest.apiinformatorio.exception.ResourceNotFoundException;
 import com.apirest.apiinformatorio.model.State;
 import com.apirest.apiinformatorio.repository.StateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,40 +16,43 @@ public class StateService {
     @Autowired
     private StateRepository stateRepository;
 
-    public ResponseEntity<State> addState(State state) {
-        State newState = stateRepository.save(state);
-        return ResponseEntity.ok(newState);
+    public State addState(State state) {
+        return stateRepository.save(state);
     }
 
-    public ResponseEntity<List<State>> getStates() {
-        List<State> states = stateRepository.findAll();
-        return ResponseEntity.ok(states);
+    public List<State> getStates() {
+        return stateRepository.findAll();
     }
 
-    public ResponseEntity<State> getStateById(Long id){
+    public State getStateById(Long id){
         Optional<State> optionalState = stateRepository.findById(id);
         if(optionalState.isPresent()){
-            return ResponseEntity.ok(optionalState.get());
+            return optionalState.get();
         } else {
-            return ResponseEntity.noContent().build();
+            throw new ResourceNotFoundException("Provincia con id: "+id+" no encontrado.");
         }
     }
 
-    public ResponseEntity<String> deleteStateById(Long id) {
-        stateRepository.deleteById(id);
-        String message = "Se ha borrado la provincia con el ID: " + id;
-        return ResponseEntity.ok(message);
+    public String deleteStateById(Long id) {
+        Optional<State> optionalState = stateRepository.findById(id);
+        if(optionalState.isPresent()) {
+            stateRepository.deleteById(id);
+            String message = "Se ha borrado la provincia con el ID: " + id;
+            return message;
+        } else {
+            throw new ResourceNotFoundException("Provincia con id: "+id+" no encontrado.");
+        }
     }
 
-    public ResponseEntity<State> updateState(State state) {
+    public State updateState(State state) {
         Optional<State> optionalState = stateRepository.findById(state.getId());
         if(optionalState.isPresent()) {
             State stateToUpdate = optionalState.get();
             stateToUpdate.setName(state.getName());
             stateRepository.save(stateToUpdate);
-            return ResponseEntity.ok(stateToUpdate);
+            return stateToUpdate;
         } else {
-            return ResponseEntity.notFound().build();
+            throw new ResourceNotFoundException("Provincia con id: "+state.getId()+" no encontrado.");
         }
     }
 
