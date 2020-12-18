@@ -1,5 +1,8 @@
 package com.apirest.apiinformatorio.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,9 +16,14 @@ public class City {
     @Column(nullable = false, length = 150)
     private String name;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "state_id")
+    @ManyToOne
+    @JoinColumn(name = "state_id", nullable = false)
+    @JsonBackReference("state_city")
     private State state;
+
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JsonManagedReference("user_city")
+    private List<User> users;
 
     public Long getId() {
         return id;
