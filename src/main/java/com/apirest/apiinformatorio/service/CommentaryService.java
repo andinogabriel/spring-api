@@ -2,6 +2,7 @@ package com.apirest.apiinformatorio.service;
 
 import com.apirest.apiinformatorio.exception.ResourceNotFoundException;
 import com.apirest.apiinformatorio.model.Commentary;
+import com.apirest.apiinformatorio.model.Post;
 import com.apirest.apiinformatorio.repository.CommentaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,7 @@ public class CommentaryService {
         }
     }
 
+
     public Commentary updateCommentary(Commentary commentary) {
         Optional<Commentary> optionalCommentary = commentaryRepository.findById(commentary.getId());
         if(optionalCommentary.isPresent()) {
@@ -53,10 +55,16 @@ public class CommentaryService {
         }
     }
 
+
+
+    //Funcion que retorna una lista de comentarios de un post con un limite opcional, ordenados descendentemente por id de comentario
     public List<Commentary> getCommentariesPostByLimit(Long id_post, Integer lim) {
         return commentaryRepository.getCommentariesPostByLimit(id_post, lim);
     }
 
-
+    //Por las dudas si no se especifica el limite de comentarios a mostrar del post, se trae todos los comentarios del post.
+    public List<Commentary> findByPostOrderByIdDesc(Post post) {
+        return commentaryRepository.findByPostOrderByIdDesc(post);
+    }
 
 }
