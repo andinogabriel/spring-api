@@ -3,12 +3,13 @@ package com.apirest.apiinformatorio.controller;
 import com.apirest.apiinformatorio.model.Country;
 import com.apirest.apiinformatorio.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("api/v1/country")
+@RequestMapping("api/v1/pais")
 @RestController
 public class CountryController {
 
@@ -17,28 +18,30 @@ public class CountryController {
 
     @GetMapping
     public ResponseEntity<List<Country>> getCountries() {
-        return countryService.getCountries();
+        return ResponseEntity.ok().body(countryService.getCountries());
     }
 
-    @RequestMapping(value = "{id}")
+    @RequestMapping("{id}")
     public ResponseEntity<Country> getCountryById(@PathVariable("id") Long id) {
-        return countryService.getCountryById(id);
+        return ResponseEntity.ok().body(countryService.getCountryById(id));
     }
 
-    @PostMapping
+    @PostMapping("/agregar")
     public ResponseEntity<Country> addCountry(@RequestBody Country country) {
-        return countryService.addCountry(country);
+        return ResponseEntity.status(HttpStatus.CREATED).body(countryService.addCountry(country));
     }
 
-    @DeleteMapping(value = "{id}")
-    public ResponseEntity<String> deleteCountry (@PathVariable("id") Long id) {
-        return countryService.deleteCountry(id);
+    @DeleteMapping("/borrar/{id}")
+    public HttpStatus deleteCountry (@PathVariable("id") Long id) {
+        countryService.deleteCountry(id);
+        return HttpStatus.NO_CONTENT;
     }
 
 
-    @PutMapping
-    public ResponseEntity<Country> updateCountry(@RequestBody Country country) {
-        return countryService.updateCountry(country);
+    @PutMapping("/actualizar/{id}")
+    public ResponseEntity<Country> updateCountry(@PathVariable("id") Long id, @RequestBody Country country) {
+        country.setId(id);
+        return ResponseEntity.ok().body(countryService.updateCountry(country));
     }
 
 }
