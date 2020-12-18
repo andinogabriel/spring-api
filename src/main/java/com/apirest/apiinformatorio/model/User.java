@@ -1,9 +1,6 @@
 package com.apirest.apiinformatorio.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -37,18 +34,34 @@ public class User {
     @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate registerDate;
 
-    @Column(length = 100)
-    private String city;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "city_id", nullable = false)
+    @JsonBackReference("user_city")
+    private City city;
 
-    @Column(length = 100)
-    private String state;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "state_id", nullable = false)
+    @JsonBackReference("user_state")
+    private State state;
 
-    @Column(length = 100)
-    private String country;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "country_id", nullable = false)
+    @JsonBackReference("user_country")
+    private Country country;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     @JsonManagedReference("user_comments")
     private List<Commentary> comments;
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonManagedReference("user_post")
+    private List<Post> posts;
+
+
+    public List<Post> getPosts() {
+        return posts;
+    }
 
     public List<Commentary> getComments() {
         return comments;
@@ -56,14 +69,6 @@ public class User {
 
     public void setComments(List<Commentary> comments) {
         this.comments = comments;
-    }
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    @JsonManagedReference("user_post")
-    private List<Post> posts;
-
-    public List<Post> getPosts() {
-        return posts;
     }
 
     public Long getId() {
@@ -120,29 +125,27 @@ public class User {
         this.posts = posts;
     }
 
-    public String getCity() {
+    public City getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(City city) {
         this.city = city;
     }
 
-    public String getState() {
+    public State getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(State state) {
         this.state = state;
     }
 
-    public String getCountry() {
+    public Country getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(Country country) {
         this.country = country;
     }
-
-
 }
