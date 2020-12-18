@@ -1,6 +1,7 @@
 package com.apirest.apiinformatorio.service;
 
 import com.apirest.apiinformatorio.exception.ResourceNotFoundException;
+import com.apirest.apiinformatorio.model.City;
 import com.apirest.apiinformatorio.model.User;
 import com.apirest.apiinformatorio.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,12 +68,12 @@ public class UserService {
         }
     }
 
-    public List<User> getUsersForCity(String city) {
-        return userRepository.getUsersForCity(city);
+    public List<User> findByCityEquals(City city) {
+        return userRepository.findByCityEquals(city);
     }
 
-    public List<User> getUsersFromRegisterDate(LocalDate date) {
-        return userRepository.getUserForRegisterDate(date);
+    public List<User> findByRegisterDateAfter(LocalDate date) {
+        return userRepository.findByRegisterDateAfter(date);
     }
 
 
