@@ -1,5 +1,7 @@
 package com.apirest.apiinformatorio.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,18 +17,14 @@ public class Country {
     @Column(nullable = false, length = 150)
     private String name;
 
-    @OneToMany(
-            mappedBy = "country",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
+    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference("country_state")
     private List<State> states;
 
+    @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
+    @JsonManagedReference("user_country")
+    private List<User> users;
 
-    public void addState(State state) {
-        if (states == null) states = new ArrayList<State>();
-        states.add(state);
-    }
 
     public Long getId() {
         return id;
@@ -52,5 +50,11 @@ public class Country {
         this.states = states;
     }
 
+    public List<User> getUsers() {
+        return users;
+    }
 
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 }
