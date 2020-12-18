@@ -1,7 +1,9 @@
 package com.apirest.apiinformatorio.service;
 
 import com.apirest.apiinformatorio.exception.ResourceNotFoundException;
+import com.apirest.apiinformatorio.model.Commentary;
 import com.apirest.apiinformatorio.model.Post;
+import com.apirest.apiinformatorio.repository.CommentaryRepository;
 import com.apirest.apiinformatorio.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ public class PostService {
 
     @Autowired
     private PostRepository postRepository;
+    private CommentaryRepository commentaryRepository;
 
     public Post addPost(Post post) {
         return postRepository.save(post);
@@ -56,12 +59,17 @@ public class PostService {
         }
     }
 
-    public List<Post> findPostsByWordTitle(String wordTitle) {
-        return postRepository.findPostsByWordTitle(wordTitle);
+
+    public Commentary addCommentary(Commentary commentary) {
+        return commentaryRepository.save(commentary);
     }
 
-    public List<Post> getPostsNotPublished() {
-        return postRepository.getPostsNotPublished();
+    public List<Post> findByTitleContaining(String wordTitle) {
+        return postRepository.findByTitleContaining(wordTitle);
+    }
+
+    public List<Post> findByPublishedFalse() {
+        return postRepository.findByPublishedFalse();
     }
 
 }
