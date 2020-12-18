@@ -2,6 +2,7 @@ package com.apirest.apiinformatorio.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.json.bind.annotation.JsonbCreator;
@@ -23,10 +24,11 @@ public class State {
 
 
     @ManyToOne
-    @JoinColumn(name = "country_id")
+    @JoinColumn(name = "country_id", nullable = false)
+    @JsonBackReference("country_state")
     private Country country;
 
-    @JsonBackReference
+
     public Country getCountry() {
         return country;
     }
@@ -34,10 +36,15 @@ public class State {
         this.country = country;
     }
 
-    @OneToMany(mappedBy = "state", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "state", cascade = CascadeType.ALL)
+    @JsonManagedReference("state_city")
     private List<City> cities;
 
-    @JsonBackReference
+    @OneToMany(mappedBy = "state", fetch = FetchType.LAZY)
+    @JsonManagedReference("user_state")
+    private List<User> users;
+
+
     public List<City> getCities() {
         return cities;
     }
@@ -63,7 +70,11 @@ public class State {
         this.name = name;
     }
 
+    public List<User> getUsers() {
+        return users;
+    }
 
-
-
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 }
