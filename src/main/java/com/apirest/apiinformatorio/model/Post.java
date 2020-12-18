@@ -34,7 +34,7 @@ public class Post {
     private LocalDate creationDate;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     @JsonBackReference("user_post")
     private User user;
 
