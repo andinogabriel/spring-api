@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registracion exitosa</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Registro exitoso.</h1>
+        <table>
+            <tbody>
+            <tr>
+                <th><span>Nombre:</span></th>
+                <td><span th:text="${user.name}"></span></td>
+            </tr>
+            <tr>
+                <th><span>Apellido:</span></th>
+                <td><span th:text="${user.lastName}"></span></td>
+            </tr>
+            <tr>
+                <th><span>Email:</span></th>
+                <td><span th:text="${user.email}"></span></td>
+            </tr>
+            <tr>
+                <th><span>País:</span></th>
+                <td><span th:text="${user.country}"></span></td>
+            </tr>
+            <tr>
+                <th><span>Provincia:</span></th>
+                <td><span th:text="${user.state}"></span></td>
+            </tr>
+            <tr>
+                <th><label><span>Ciudad:</span></label></th>
+                <td><span th:text="${user.city}"></span></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+</body>
+</html>
