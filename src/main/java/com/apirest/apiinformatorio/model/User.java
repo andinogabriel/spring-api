@@ -148,4 +148,16 @@ public class User {
     public void setCountry(Country country) {
         this.country = country;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", city=" + city +
+                ", state=" + state +
+                ", country=" + country +
+                '}';
+    }
 }
