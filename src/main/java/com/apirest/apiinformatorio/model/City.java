@@ -49,4 +49,8 @@ public class City {
         this.state = state;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }
