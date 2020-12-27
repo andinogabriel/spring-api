@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "be733ee1-63f7-4f97-a750-5a065139a448",
+		"name": "GET - Obtener usuarios registrados despues de una fecha",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9191/api/v1/usuario/fecha-creacion?date=15-12-2020",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Carlos\",\r\n    \"lastName\": \"Tevez\",\r\n    \"email\": \"carlos.tevez@gmail.com\",\r\n    \"country\": {\"id\": 1},\r\n    \"state\": {\"id\": 1},\r\n    \"city\": {\"id\": 1}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/usuario/fecha-creacion?date=15-12-2020",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"usuario",
+						"fecha-creacion"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "15-12-2020"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/api/v1/usuario/fecha-creacion?date=20-12-2020",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Carlos\",\r\n    \"lastName\": \"Tevez\",\r\n    \"email\": \"carlos.tevez@gmail.com\",\r\n    \"country\": {\"id\": 1},\r\n    \"state\": {\"id\": 1},\r\n    \"city\": {\"id\": 1}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/usuario/fecha-creacion?date=20-12-2020",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"usuario",
+						"fecha-creacion"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "20-12-2020"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

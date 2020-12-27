@@ -1,0 +1,41 @@
+{
+	"info": {
+		"_postman_id": "283bad49-d619-4657-9135-6ea54658d460",
+		"name": "DELETE - Eliminar un usuario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9191/api/v1/usuario/eliminar/3",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Mi primer post actualizado\",\r\n    \"description\": \"Probando el sitio\",\r\n    \"body\": \"Aqui yo escribiendo mi primer post en este sitio\",\r\n    \"published\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/usuario/eliminar/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"usuario",
+						"eliminar",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

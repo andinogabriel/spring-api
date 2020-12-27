@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "b86ce7c1-389e-4700-b294-f9674c699e58",
+		"name": "DELETE - Eliminar un comentario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9191/api/v1/post/1/comentarios/eliminar?id_comentario=5",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": {\"id\": 1},\r\n    \"comment\": \"Excelente post\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/post/1/comentarios/eliminar?id_comentario=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"post",
+						"1",
+						"comentarios",
+						"eliminar"
+					],
+					"query": [
+						{
+							"key": "id_comentario",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/api/v1/post/99/comentarios/eliminar?id_comentario=2",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comment\": \"Mas o menos tu post\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/post/99/comentarios/eliminar?id_comentario=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"post",
+						"99",
+						"comentarios",
+						"eliminar"
+					],
+					"query": [
+						{
+							"key": "id_comentario",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/api/v1/post/99/comentarios/eliminar?id_comentario=2",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comment\": \"Mas o menos tu post\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/post/99/comentarios/eliminar?id_comentario=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"post",
+						"99",
+						"comentarios",
+						"eliminar"
+					],
+					"query": [
+						{
+							"key": "id_comentario",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

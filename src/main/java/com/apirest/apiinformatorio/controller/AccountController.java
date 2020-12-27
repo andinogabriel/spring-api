@@ -8,15 +8,17 @@ import com.apirest.apiinformatorio.service.CityService;
 import com.apirest.apiinformatorio.service.CountryService;
 import com.apirest.apiinformatorio.service.StateService;
 import com.apirest.apiinformatorio.service.UserService;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @Controller
-public class MainController {
+public class AcountController {
 
     @Autowired
     private CountryService countryService;
@@ -27,9 +29,11 @@ public class MainController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String showForm(Model model){
-        User user = new User();
+    private static final Logger log = LoggerFactory.getLogger()
+
+
+    @GetMapping("/register")
+    public String register(@ModelAttribute User user, Model model){
         model.addAttribute("user", user);
 
         List<Country> countries = countryService.getCountries();
@@ -46,7 +50,7 @@ public class MainController {
 
 
     @PostMapping("/register")
-    public String submitForm(@ModelAttribute("user") User user){
+    public String save(@ModelAttribute("user") User user){
         System.out.println(user);
         userService.addUser(user);
         return "register_success";

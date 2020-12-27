@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "2050c920-b8e4-4873-87d5-cb7fa061a553",
+		"name": "GET - Obtener todos los post que contenga una palabra dada en el titulo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9191/api/v1/post/palabra?word=informatorio",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Informatorio\",\r\n    \"description\": \"Review del informatorio 2020\",\r\n    \"body\": \"Aqui escribiendo con muchas ganas este increible post\",\r\n    \"published\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/post/palabra?word=informatorio",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"post",
+						"palabra"
+					],
+					"query": [
+						{
+							"key": "word",
+							"value": "informatorio"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/api/v1/post/palabra?word=mi",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Informatorio\",\r\n    \"description\": \"Review del informatorio 2020\",\r\n    \"body\": \"Aqui escribiendo con muchas ganas este increible post\",\r\n    \"published\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/post/palabra?word=mi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"post",
+						"palabra"
+					],
+					"query": [
+						{
+							"key": "word",
+							"value": "mi"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

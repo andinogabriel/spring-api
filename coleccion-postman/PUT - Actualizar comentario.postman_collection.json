@@ -1,0 +1,123 @@
+{
+	"info": {
+		"_postman_id": "31db0a7a-4af4-41be-b64b-e40be902b37d",
+		"name": "PUT - Actualizar comentario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9191/api/v1/post/1/actualizar-comentario?id_comentario=3",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comment\": \"Mas o menos tu post\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/post/1/actualizar-comentario?id_comentario=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"post",
+						"1",
+						"actualizar-comentario"
+					],
+					"query": [
+						{
+							"key": "id_comentario",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/api/v1/post/1/actualizar-comentario?id_comentario=1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comment\": \"Excelente post, dude\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/post/1/actualizar-comentario?id_comentario=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"post",
+						"1",
+						"actualizar-comentario"
+					],
+					"query": [
+						{
+							"key": "id_comentario",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/api/v1/post/1/actualizar-comentario?id_comentario=2",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"author\": {\"id\": 4},\r\n    \"comment\": \"Excelente post, chamigazo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/post/1/actualizar-comentario?id_comentario=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"post",
+						"1",
+						"actualizar-comentario"
+					],
+					"query": [
+						{
+							"key": "id_comentario",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

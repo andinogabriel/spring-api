@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "1ff88fe4-442e-4abe-94a2-2dd6cacb51ae",
+		"name": "POST - Agregar Usuario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9191/api/v1/user/agregar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Juan\",\r\n    \"lastName\": \"Perez\",\r\n    \"email\": \"juan.perez@gmail.com\",\r\n    \"password\": \"perez123\",\r\n    \"city\": {\"id\":1},\r\n    \"state\": {\"id\": 1},\r\n    \"country\": {\"id\": 1}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/user/agregar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"agregar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/api/v1/user/agregar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Pedro\",\r\n    \"lastName\": \"Gonzalez\",\r\n    \"email\": \"pedro.gonzalez@gmail.com\",\r\n    \"password\": \"gonzalez123\",\r\n    \"city\": {\"id\":2},\r\n    \"state\": {\"id\": 1},\r\n    \"country\": {\"id\": 1}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/user/agregar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"agregar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/api/v1/user/agregar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Jose\",\r\n    \"lastName\": \"Sosa\",\r\n    \"email\": \"jose.sosa@gmail.com\",\r\n    \"password\": \"sosa123456\",\r\n    \"city\": {\"id\":2},\r\n    \"state\": {\"id\": 1},\r\n    \"country\": {\"id\": 1}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/user/agregar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"agregar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/api/v1/user/agregar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Martim\",\r\n    \"lastName\": \"Palermm\",\r\n    \"email\": \"martin.palermo@gmail.com\",\r\n    \"password\": \"palermo123\",\r\n    \"city\": {\"id\":1},\r\n    \"state\": {\"id\": 1},\r\n    \"country\": {\"id\": 1}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/user/agregar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"agregar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/api/v1/usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Carlos\",\r\n    \"lastName\": \"Tevez\",\r\n    \"email\": \"carlos.tevez@gmail.com\",\r\n    \"country\": {\"id\": 1},\r\n    \"state\": {\"id\": 1},\r\n    \"city\": {\"id\": 1}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/usuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

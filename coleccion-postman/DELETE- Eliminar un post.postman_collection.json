@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "b689900a-bd87-4e21-94eb-36226a5486cb",
+		"name": "DELETE- Eliminar un post",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9191/api/v1/post/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Mi primer post actualizado\",\r\n    \"description\": \"Probando el sitio\",\r\n    \"body\": \"Aqui yo escribiendo mi primer post en este sitio\",\r\n    \"published\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/post/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"post",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

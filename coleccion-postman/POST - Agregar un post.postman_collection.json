@@ -1,0 +1,105 @@
+{
+	"info": {
+		"_postman_id": "c16419c4-aa58-4315-a4c7-28960f422d6d",
+		"name": "POST - Agregar un post",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9191/api/v1/usuario/3/crear-post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Probando mi primer post\",\r\n    \"description\": \"Probando esta nueva pagina de posts\",\r\n    \"body\": \"Aqui escribiendo con muchas ganas este increible post\",\r\n    \"published\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/user/3/crear-post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"3",
+						"crear-post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/api/v1/usuario/2/crear-post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Probando mi primer post\",\r\n    \"description\": \"Probando esta nueva pagina de posts\",\r\n    \"body\": \"Aqui escribiendo con muchas ganas este increible post\",\r\n    \"published\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/user/2/crear-post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"2",
+						"crear-post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/api/v1/usuario/4/crear-post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Informatorio\",\r\n    \"description\": \"Review del informatorio 2020\",\r\n    \"body\": \"Aqui escribiendo con muchas ganas este increible post\",\r\n    \"published\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/usuario/4/crear-post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"usuario",
+						"4",
+						"crear-post"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
