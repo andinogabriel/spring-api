@@ -18,10 +18,8 @@ target/
 *.iws
 *.iml
 *.ipr
-mvnw
-mvnw.cmd
 target
-src/main/resources/application.yml
+
 
 ### NetBeans ###
 /nbproject/private/
