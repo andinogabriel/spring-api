@@ -20,7 +20,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9191/api/v1/user/3/crear-post",
+					"raw": "http://localhost:9191/api/v1/usuario/3/crear-post",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -52,7 +52,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9191/api/v1/user/2/crear-post",
+					"raw": "http://localhost:9191/api/v1/usuario/2/crear-post",
 					"protocol": "http",
 					"host": [
 						"localhost"
