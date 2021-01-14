@@ -4,5 +4,38 @@
 		"name": "PUT - Actualizar un usuario",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
-	"item": []
+	"item": [
+		{
+			"name": "http://localhost:9191/api/v1/usuario/actualizar/8",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Fulano Mengano\",\r\n    \"lastName\": \"Garcia\",\r\n    \"email\": \"mengano@gmail.com\",\r\n    \"password\": \"garcia123\",\r\n    \"city\": {\"id\":1},\r\n    \"state\": {\"id\": 1},\r\n    \"country\": {\"id\": 1}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/v1/usuario/actualizar/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"v1",
+						"usuario",
+						"actualizar",
+						"8"
+					]
+				}
+			},
+			"response": []
+		}
+	]
 }
