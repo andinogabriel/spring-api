@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:9191/api/v1/user/agregar",
+			"name": "http://localhost:9191/api/v1/usuario/agregar",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -20,7 +20,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9191/api/v1/user/agregar",
+					"raw": "http://localhost:9191/api/v1/usuario/agregar",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -37,7 +37,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:9191/api/v1/user/agregar",
+			"name": "http://localhost:9191/api/v1/usuario/agregar",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -51,7 +51,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9191/api/v1/user/agregar",
+					"raw": "http://localhost:9191/api/v1/usuario/agregar",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -68,7 +68,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:9191/api/v1/user/agregar",
+			"name": "http://localhost:9191/api/v1/usuario/agregar",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -82,7 +82,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9191/api/v1/user/agregar",
+					"raw": "http://localhost:9191/api/v1/usuario/agregar",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -99,7 +99,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:9191/api/v1/user/agregar",
+			"name": "http://localhost:9191/api/v1/usuario/agregar",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -113,7 +113,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9191/api/v1/user/agregar",
+					"raw": "http://localhost:9191/api/v1/usuario/agregar",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -130,7 +130,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:9191/api/v1/usuario",
+			"name": "http://localhost:9191/api/v1/usuario/agregar",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -144,7 +144,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9191/api/v1/usuario",
+					"raw": "http://localhost:9191/api/v1/usuario/agregar",
 					"protocol": "http",
 					"host": [
 						"localhost"
