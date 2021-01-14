@@ -2,12 +2,12 @@
 	"info": {
 		"_postman_id": "6feae215-56e1-42f7-ad90-2ff98de14820",
 		"name": "GET - Obtener usuarios de Resistencia",
-		"description": "Se debe pasar el id de la de ciudad de Resistencia que en este caso es el 1\r\nhttp://localhost:9191/api/v1/user/ciudad?city=1",
+		"description": "Se debe pasar el id de la de ciudad de Resistencia que en este caso es el 1\r\nhttp://localhost:9191/api/v1/usuario/ciudad?city=1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "http://localhost:9191/api/v1/user/ciudad?city=1",
+			"name": "http://localhost:9191/api/v1/usuario/ciudad?city=1",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -24,7 +24,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9191/api/v1/user/ciudad?city=1",
+					"raw": "http://localhost:9191/api/v1/usuario/ciudad?city=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
