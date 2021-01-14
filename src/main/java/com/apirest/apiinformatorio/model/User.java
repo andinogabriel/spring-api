@@ -4,9 +4,12 @@ import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 import java.time.LocalDate;
 
-import java.util.ArrayList;
+
 
 import java.util.List;
 
@@ -18,34 +21,41 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 150)
+    @Column(length = 150)
+    @NotBlank(message = "Ingrese su nombre.")
     private String name;
 
-    @Column(nullable = false, length = 150)
+    @NotBlank(message = "Ingrese su apellido.")
+    @Column(length = 150)
     private String lastName;
 
-    @Column(nullable = false, length = 100, unique = true)
+    @Email(message = "Ingrese un email valido.")
+    @Column(length = 100, unique = true)
     private String email;
 
-    @Column(length = 100)
+    @NotBlank(message = "Ingrese su password.")
     private String password;
+
+    @Column(length = 100)
+    @NotBlank(message = "Reingrese su password.")
+    private String rpassword;
 
     @CreationTimestamp
     @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate registerDate;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "city_id", nullable = false)
+    @ManyToOne
+    @JoinColumns({ @JoinColumn(name = "city_id", referencedColumnName = "id", unique = false, nullable = true) })
     @JsonBackReference("user_city")
     private City city;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "state_id", nullable = false)
+    @ManyToOne
+    @JoinColumns({ @JoinColumn(name = "state_id", referencedColumnName = "id", unique = false, nullable = true) })
     @JsonBackReference("user_state")
     private State state;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "country_id", nullable = false)
+    @ManyToOne
+    @JoinColumns({ @JoinColumn(name = "country_id", referencedColumnName = "id", unique = false, nullable = true) })
     @JsonBackReference("user_country")
     private Country country;
 
@@ -149,12 +159,23 @@ public class User {
         this.country = country;
     }
 
+    public String getRpassword() {
+        return rpassword;
+    }
+
+    public void setRpassword(String rpassword) {
+        this.rpassword = rpassword;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", rpassword='" + rpassword + '\'' +
                 ", city=" + city +
                 ", state=" + state +
                 ", country=" + country +

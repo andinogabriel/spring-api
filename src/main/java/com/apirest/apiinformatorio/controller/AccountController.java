@@ -4,21 +4,26 @@ import com.apirest.apiinformatorio.model.City;
 import com.apirest.apiinformatorio.model.Country;
 import com.apirest.apiinformatorio.model.State;
 import com.apirest.apiinformatorio.model.User;
+import com.apirest.apiinformatorio.objects.UserDTO;
 import com.apirest.apiinformatorio.service.CityService;
 import com.apirest.apiinformatorio.service.CountryService;
 import com.apirest.apiinformatorio.service.StateService;
 import com.apirest.apiinformatorio.service.UserService;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
-import java.util.logging.Logger;
 
 @Controller
-public class AcountController {
+public class AccountController {
 
     @Autowired
     private CountryService countryService;
@@ -29,7 +34,13 @@ public class AcountController {
     @Autowired
     private UserService userService;
 
-    private static final Logger log = LoggerFactory.getLogger()
+    private static final Logger log = LoggerFactory.getLogger(AccountController.class);
+
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder){
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
 
 
     @GetMapping("/register")
@@ -50,9 +61,13 @@ public class AcountController {
 
 
     @PostMapping("/register")
-    public String save(@ModelAttribute("user") User user){
+    public String save(@Valid User user, BindingResult bindingResult){
+
+        if(bindingResult.hasErrors()) {
+            return "register_form";
+        }
         System.out.println(user);
-        userService.addUser(user);
+        log.info(">> user: {}", user.toString());
         return "register_success";
     }
 }

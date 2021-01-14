@@ -52,9 +52,9 @@ public class UserService {
 
 
     public User updateUser(User user) {
-        Optional<User> optionalUser = this.userRepository.findById(user.getId());
-        if(optionalUser.isPresent()) {
-            User userToUpDate = optionalUser.get();
+        if(userRepository.findById(user.getId()).isPresent()) {
+            User userToUpDate = new User();
+            userToUpDate.setId(user.getId());
             userToUpDate.setName(user.getName());
             userToUpDate.setLastName(user.getLastName());
             userToUpDate.setEmail(user.getEmail());

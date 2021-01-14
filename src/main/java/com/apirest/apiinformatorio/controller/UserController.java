@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
@@ -46,7 +47,7 @@ public class UserController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id ,@RequestBody User user) {
+    public ResponseEntity<User> updateUser(@PathVariable("id") Long id ,@Valid @RequestBody User user) {
         user.setId(id);
         return ResponseEntity.ok().body(userService.updateUser(user));
     }
